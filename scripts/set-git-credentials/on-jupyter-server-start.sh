@@ -2,6 +2,11 @@
 # directly for cloning a repository from a private git repo or pushing back changes upstream. 
 # Storing passwords and tokens in Secrets Manager eliminates the need to store any sensitive information on EFS.
 
+# Steps:
+# 1. Add your password or personal developer token to Secret Manager
+# 2. Set the secret name and key in the script below
+# 3. Clone your repository via HTTP with the user name in the url, e.g. "git clone http://username@github.com/...."
+
 #!/bin/bash
 
 set -eux
@@ -63,3 +68,4 @@ EOL
 
 chmod +x ~/.aws-credention-helper.py
 git config --global credential.helper ~/.aws-credention-helper.py
+
