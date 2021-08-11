@@ -1,17 +1,15 @@
-## My Project
+# SageMaker Studio Lifecycle Configuration Samples
 
-TODO: Fill this README out!
+### Overview
 
-Be sure to:
+A collection of sample scripts customizing SageMaker Studio Applications using Lifecycle Configuration
 
-* Change the title in this README
-* Edit your repository description on GitHub
+Lifecycle Configurations provide a mechanism to customize the Jupyter Server and Kernel Application instances via shell scripts that are executed during the lifecycle of the application.
 
-## Security
+#### Sample Scripts
 
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
-
-## License
-
-This library is licensed under the MIT-0 License. See the LICENSE file.
-
+* [install-autoshutdown-extension](scripts/install-autoshutdown-extensions) -
+* [install-pip-package-on-kernel](scripts/install-pip-package-on-kernel) - 
+* [set-git-config](scripts/set-git-config) - This script sets the username and email address in Git config.
+* [set-git-credentials](scripts/set-git-credentials) - Adds the user's git credentials to Secret Manager and configures git to fetch the credentials from there when needed
+* [set-proxy-settings](scripts/set-proxy-settings) - Configures HTTP and HTTPS proxy settings on jupter server and on the Studio kernels.
