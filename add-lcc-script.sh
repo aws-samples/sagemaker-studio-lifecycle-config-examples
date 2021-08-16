@@ -1,4 +1,5 @@
 #!/bin/bash
+# Registers a Lifecycle Configuration Script using the AWS CLI
 
 set -eux
 
