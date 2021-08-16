@@ -3,6 +3,7 @@
 
 set -eux
 
+sudo yum -y install wget
 wget https://github.com/aws-samples/sagemaker-studio-auto-shutdown-extension/raw/main/sagemaker_studio_autoshutdown-0.1.1.tar.gz
 pip install sagemaker_studio_autoshutdown-0.1.1.tar.gz
 jlpm config set cache-folder /tmp/yarncache
