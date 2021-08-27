@@ -36,7 +36,7 @@ chmod +x /home/sagemaker-user/set-time-interval.sh
 
 # "wget" is not part of the base Jupyter Server image, you need to install it first if needed to download the tarball
 # sudo yum install -y wget
-# Yoy can download the tarball from GitHub or alternatively, if you're using VPCOnly mode, you can host on S3
+# You can download the tarball from GitHub or alternatively, if you're using VPCOnly mode, you can host on S3
 wget https://github.com/aws-samples/sagemaker-studio-auto-shutdown-extension/raw/main/sagemaker_studio_autoshutdown-0.1.1.tar.gz
 # aws s3 --endpoint-url [S3 Interface Endpoint] cp s3://[tarball location] .
 
