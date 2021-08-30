@@ -4,5 +4,5 @@
 
 2. Always add the "set -eux" command to the beginning of your script. This command will print out the commands executed by your script line by line and will be visible in the logs as well. This helps you to troubleshoot your scripts faster.
 
-3. Be careful using the "sudo" command in KernelGateways scripts. Not all kernels runs as root by default. If the kernel runs as root, don't use the sudo command. Use sudo command only when the Kernel runs as a non-root default user.
+3. Be careful using the "sudo" command in KernelGateways scripts. Not all kernels runs as root by default. If the kernel run as root, don't use the sudo command. Use sudo command only when the Kernel runs as a non-root default user.
 
