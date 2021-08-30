@@ -24,7 +24,7 @@ AWS_SECRET_KEY="github.com"
 ## Script Body
 
 PYTHON_EXEC=$(command -v python)
-cat > ~/.aws-credention-helper.py <<EOL
+cat > ~/.aws-credential-helper.py <<EOL
 #!$PYTHON_EXEC
 
 import sys
@@ -66,6 +66,5 @@ for key, value in credentials.items():
 
 EOL
 
-chmod +x ~/.aws-credention-helper.py
-git config --global credential.helper ~/.aws-credention-helper.py
-
+chmod +x ~/.aws-credential-helper.py
+git config --global credential.helper ~/.aws-credential-helper.py
