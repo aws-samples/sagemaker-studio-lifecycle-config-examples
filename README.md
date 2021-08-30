@@ -15,3 +15,7 @@ Lifecycle Configurations provide a mechanism to customize the Jupyter Server and
 * [set-git-config](scripts/set-git-config) - This script sets the username and email address in Git config.
 * [set-git-credentials](scripts/set-git-credentials) - Adds the user's git credentials to Secret Manager and configures git to fetch the credentials from there when needed
 * [set-proxy-settings](scripts/set-proxy-settings) - Configures HTTP and HTTPS proxy settings on jupter server and on the Studio kernels.
+
+#### Developing LCC Scripts for SageMaker Studio
+
+For best practicies, please check the [DEVELOPMENT.md](DEVELOPMENT.md].
