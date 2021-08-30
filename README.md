@@ -18,4 +18,4 @@ Lifecycle Configurations provide a mechanism to customize the Jupyter Server and
 
 #### Developing LCC Scripts for SageMaker Studio
 
-For best practicies, please check the [DEVELOPMENT.md](DEVELOPMENT.md].
+For best practicies, please check the [DEVELOPMENT.md](DEVELOPMENT.md).
