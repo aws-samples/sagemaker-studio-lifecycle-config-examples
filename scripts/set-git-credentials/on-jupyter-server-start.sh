@@ -14,7 +14,7 @@ set -eux
 ## Parameters 
 # your git provider, e.g. github.com
 GIT_PROVIDER="github.com"
-GIT_USERNAME="garzoand"
+GIT_USERNAME="<provide your username here>"
 AWS_REGION="us-west-2"
 # Secret name stored in AWS Secrets Manager
 AWS_SECRET_NAME="my-git-credentials"

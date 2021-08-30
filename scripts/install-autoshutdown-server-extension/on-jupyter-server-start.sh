@@ -11,7 +11,7 @@
 set -eux
 
 # timeout in minutes
-export TIMEOUT_IN_MINS=2
+export TIMEOUT_IN_MINS=120
 
 # creating the command-line script for setting the idle timeout
 cat > /home/sagemaker-user/set-time-interval.sh << EOF
@@ -50,8 +50,8 @@ jupyter serverextension enable --py sagemaker_studio_autoshutdown
 # Restarts the jupyter server
 nohup supervisorctl -c /etc/supervisor/conf.d/supervisord.conf restart jupyterlabserver
 
-# Waiting for 60 seconds to make sure the Jupyter Server is up and running
-sleep 60
+# Waiting for 30 seconds to make sure the Jupyter Server is up and running
+sleep 30
 
 # Calling the script to set the idle-timeout and active the extension
 /home/sagemaker-user/set-time-interval.sh
