@@ -9,8 +9,8 @@ Lifecycle Configurations provide a mechanism to customize the Jupyter Server and
 #### Sample Scripts
 
 * [git-clone-repo](scripts/git-clone-repo) - Checks out a Git repository under the user's home folder automatedly when the Jupter server starts
-* [install-autoshutdown-extension](scripts/install-autoshutdown-extensions) - Installs the auto idle-kernel shutdown extension on the Jupyter Server
-* [install-autoshutdown-server-extension](scripts/install-autoshutdown-server-extension) - Installs only the server part of idle-kernel shutdown extension. No external dependencies to install, recommended to use in VPCOnly mode with restricted Internet connectivity
+* [install-autoshutdown-extension](scripts/install-autoshutdown-extensions) - Installs the auto idle-kernel shutdown extension on the Jupyter Server. This install allows users to set idle timeout limit using the UI.
+* [install-autoshutdown-server-extension](scripts/install-autoshutdown-server-extension) - Installs only the server part of idle-kernel shutdown extension. No external dependencies to install, recommended to use in VPCOnly mode with restricted Internet connectivity. Idle timelimit has to be set using Life Cycle Configuration script.
 * [install-pip-package-on-kernel](scripts/install-pip-package-on-kernel) - Installs a python package with pip on a Studio Kernel
 * [set-git-config](scripts/set-git-config) - This script sets the username and email address in Git config.
 * [set-git-credentials](scripts/set-git-credentials) - Adds the user's git credentials to Secret Manager and configures git to fetch the credentials from there when needed
