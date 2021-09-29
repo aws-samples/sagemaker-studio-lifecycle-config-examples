@@ -13,8 +13,14 @@ set -eux
 # timeout in minutes
 export TIMEOUT_IN_MINS=120
 
-# creating the command-line script for setting the idle timeout
-cat > /home/sagemaker-user/set-time-interval.sh << EOF
+# Should already be running in user home directory, but just to check:
+cd /home/sagemaker-user
+
+# By working in a directory starting with ".", we won't clutter up users' Jupyter file tree views
+mkdir -p .auto-shutdown
+
+# Create the command-line script for setting the idle timeout
+cat > .auto-shutdown/set-time-interval.sh << EOF
 #!/opt/conda/bin/python
 import json
 import requests
@@ -32,16 +38,19 @@ else:
     print("Error!")
     print(response.status_code)
 EOF
-chmod +x /home/sagemaker-user/set-time-interval.sh
+chmod +x .auto-shutdown/set-time-interval.sh
 
 # "wget" is not part of the base Jupyter Server image, you need to install it first if needed to download the tarball
-# sudo yum install -y wget
+sudo yum install -y wget
 # You can download the tarball from GitHub or alternatively, if you're using VPCOnly mode, you can host on S3
-wget https://github.com/aws-samples/sagemaker-studio-auto-shutdown-extension/raw/main/sagemaker_studio_autoshutdown-0.1.1.tar.gz
+wget -O .auto-shutdown/extension.tar.gz https://github.com/aws-samples/sagemaker-studio-auto-shutdown-extension/raw/main/sagemaker_studio_autoshutdown-0.1.1.tar.gz
+
+# Or instead, could serve the tarball from an S3 bucket in which case "wget" would not be needed:
 # aws s3 --endpoint-url [S3 Interface Endpoint] cp s3://[tarball location] .
 
 # Installs the extension
-tar xzf sagemaker_studio_autoshutdown-0.1.1.tar.gz
+cd .auto-shutdown
+tar xzf extension.tar.gz
 cd sagemaker_studio_autoshutdown-0.1.1
 pip install pydeps/*
 pip install --no-dependencies --no-build-isolation -e .
@@ -54,4 +63,4 @@ nohup supervisorctl -c /etc/supervisor/conf.d/supervisord.conf restart jupyterla
 sleep 30
 
 # Calling the script to set the idle-timeout and active the extension
-/home/sagemaker-user/set-time-interval.sh
+/home/sagemaker-user/.auto-shutdown/set-time-interval.sh
