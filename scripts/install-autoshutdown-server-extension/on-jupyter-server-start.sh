@@ -49,12 +49,11 @@ wget -O .auto-shutdown/extension.tar.gz https://github.com/aws-samples/sagemaker
 # aws s3 --endpoint-url [S3 Interface Endpoint] cp s3://[tarball location] .
 
 # Installs the extension
-pip install .auto-shutdown/extension.tar.gz
-jupyter labextension disable sagemaker-studio-autoshutdown  # Disable the UI component
-jlpm config set cache-folder /tmp/yarncache
-jupyter lab build --debug --minimize=False
-
-jupyter serverextension enable --py sagemaker_studio_autoshutdown  # Enable the back-end component
+cd .auto-shutdown
+tar xzf extension.tar.gz
+cd sagemaker_studio_autoshutdown-0.1.1
+pip install --no-dependencies --no-build-isolation -e .
+jupyter serverextension enable --py sagemaker_studio_autoshutdown
 
 # Restarts the jupyter server
 nohup supervisorctl -c /etc/supervisor/conf.d/supervisord.conf restart jupyterlabserver
