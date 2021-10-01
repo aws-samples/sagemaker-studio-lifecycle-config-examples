@@ -52,7 +52,6 @@ wget -O .auto-shutdown/extension.tar.gz https://github.com/aws-samples/sagemaker
 cd .auto-shutdown
 tar xzf extension.tar.gz
 cd sagemaker_studio_autoshutdown-0.1.1
-pip install pydeps/*
 pip install --no-dependencies --no-build-isolation -e .
 jupyter serverextension enable --py sagemaker_studio_autoshutdown
 
