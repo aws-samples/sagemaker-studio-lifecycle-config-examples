@@ -54,15 +54,14 @@ tar xzf extension.tar.gz
 cd sagemaker_studio_autoshutdown-0.1.5
 
 # Activate studio environment just for installing extension
-export AWS_SAGEMAKER_JUPYTERSERVER_IMAGE="${AWS_SAGEMAKER_JUPYTERSERVER_IMAGE:-'jupyterserver'}"
-studio_conda_env_exists(){ conda env list | grep 'studio' >/dev/null 2>&1; }
-if [ "$AWS_SAGEMAKER_JUPYTERSERVER_IMAGE" = "jupyterserver-3" ] || studio_conda_env_exists ; then
+export AWS_SAGEMAKER_JUPYTERSERVER_IMAGE="${AWS_SAGEMAKER_JUPYTERSERVER_IMAGE:-'jupyter-server'}"
+if [ "$AWS_SAGEMAKER_JUPYTERSERVER_IMAGE" = "jupyter-server-3" ] ; then
     eval "$(conda shell.bash hook)"
     conda activate studio
 fi;
 pip install --no-dependencies --no-build-isolation -e .
 jupyter serverextension enable --py sagemaker_studio_autoshutdown
-if [ "$AWS_SAGEMAKER_JUPYTERSERVER_IMAGE" = "jupyterserver-3" ] || studio_conda_env_exists ; then
+if [ "$AWS_SAGEMAKER_JUPYTERSERVER_IMAGE" = "jupyter-server-3" ] ; then
     conda deactivate
 fi;
 
