@@ -6,3 +6,4 @@
 
 3. Be careful using the "sudo" command in KernelGateways scripts. Not all kernels runs as root by default. If the kernel run as root, don't use the sudo command. Use sudo command only when the Kernel runs as a non-root default user.
 
+4. If you are installing Jupyter lab or Jupyter server extensions, ensure they're compatible with both supported versions of JupyterLab in Studio. In short, you can directly install extensions in JupyterLab 1, and you will need to activate the `studio` conda environment to install extensions in JupyterLab 3. See [Installing JupyterLab and Jupyter Server extensions](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jl.html#studio-jl-install) for details.
