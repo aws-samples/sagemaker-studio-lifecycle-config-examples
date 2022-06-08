@@ -46,7 +46,7 @@ sudo yum install -y wget
 wget -O .auto-shutdown/extension.tar.gz https://github.com/aws-samples/sagemaker-studio-auto-shutdown-extension/raw/main/sagemaker_studio_autoshutdown-0.1.5.tar.gz
 
 # Or instead, could serve the tarball from an S3 bucket in which case "wget" would not be needed:
-# aws s3 --endpoint-url [S3 Interface Endpoint] cp s3://[tarball location] .
+# aws s3 --endpoint-url [S3 Interface Endpoint] cp s3://[tarball location] .auto-shutdown/extension.tar.gz
 
 # Installs the extension
 cd .auto-shutdown
