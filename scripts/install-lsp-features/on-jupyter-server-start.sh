@@ -86,6 +86,7 @@ fi
 
 # Similarly could set other configurations for LSP services:
 echo "Configuring pycodestyle linter max line width"
+mkdir -p ~/.config
 cat > ~/.config/pycodestyle <<EOF
 [pycodestyle]
 max-line-length = 100
