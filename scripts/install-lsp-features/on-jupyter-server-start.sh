@@ -1,5 +1,8 @@
 #!/bin/bash
-# Install and configure code completion tools *if* running high enough JupyterLab version
+# Install and configure assistive IDE tools *if* running high enough JupyterLab version (v3)
+#
+# This script sets up code completion, continuous hinting, hover tips, code formatting, markdown
+# spell-checking, and an S3 bucket explorer UI. See below comments for details.
 
 set -eu
 
@@ -61,16 +64,27 @@ set -e
 
 if [ $VERCOMP_RESULT -eq 1 ]; then
     echo "JupyterLab version '$JLAB_VERSION' is less than '$MIN_JLAB_VERSION'"
-    echo "Skipping autocomplete feature install"
+    echo "Skipping assistive features install"
     exit 0
 fi
 
-# Install the core JupyterLab LSP integration and whatever language servers you need:
-# For list of language servers, see -
+# Install:
+# - The core JupyterLab LSP integration and whatever language servers you need (omitting autopep8
+#   and yapf code formatters for Python, which don't yet have integrations per
+#   https://github.com/jupyter-lsp/jupyterlab-lsp/issues/632)
+# - Additional LSP plugins for formatting (black, isort) and refactoring (rope)
+# - Spellchecker for markdown cells
+# - Code formatting extension to bridge the LSP gap, and supported formatters
+# - Amazon S3 browser sidebar extension
+echo "Installing jupyterlab-lsp and language tools"
+pip install jupyterlab-lsp \
+    'python-lsp-server[flake8,mccabe,pycodestyle,pydocstyle,pyflakes,pylint,rope]' \
+    jupyterlab-spellchecker \
+    jupyterlab-code-formatter black isort \
+    jupyterlab-s3-browser
+# Some LSP language servers install via JS, not Python. For full list of language servers see:
 # https://jupyterlab-lsp.readthedocs.io/en/latest/Language%20Servers.html
-echo "Installing jupyterlab-lsp and language servers"
-pip install jupyterlab-lsp 'python-lsp-server[all]'
-jlpm add --dev bash-language-server
+jlpm add --dev bash-language-server dockerfile-language-server-nodejs
 
 # This configuration override is optional, to make LSP "extra-helpful" by default:
 CMP_CONFIG_DIR=.jupyter/lab/user-settings/@krassowski/jupyterlab-lsp/
@@ -84,7 +98,20 @@ else
     echo '{ "continuousHinting": true }' > $CMP_CONFIG_PATH
 fi
 
-# Similarly could set other configurations for LSP services:
+# Similarly could set other configurations. Line width is unfortunately configured separately for
+# several of these plugins:
+FMT_CONFIG_DIR=~/.jupyter/lab/user-settings/@ryantam626/jupyterlab_code_formatter
+FMT_CONFIG_FILE=settings.jupyterlab-settings
+FMT_CONFIG_PATH="$FMT_CONFIG_DIR/$FMT_CONFIG_FILE"
+if test -f $FMT_CONFIG_PATH; then
+    echo "jupyterlab-code-formatter config file already exists: Skipping default config setup"
+else
+    echo "Configuring jupyterlab-code-formatter format on save and line width"
+    mkdir -p $FMT_CONFIG_DIR
+    cat > $FMT_CONFIG_PATH <<EOF
+{"black": {"line_length": 100}, "isort": {"line_length": 100}, "formatOnSave": true}
+EOF
+fi
 echo "Configuring pycodestyle linter max line width"
 mkdir -p ~/.config
 cat > ~/.config/pycodestyle <<EOF
