@@ -72,5 +72,4 @@ conda deactivate
 
 # Once components are installed and configured, restart Jupyter to make sure everything propagates:
 echo "Restarting Jupyter server..."
-nohup supervisorctl -c /etc/supervisor/conf.d/supervisord.conf restart jupyterlabserver \
-    > /dev/null 2>&1
+restart-jupyter-server
