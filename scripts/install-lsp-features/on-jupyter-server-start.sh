@@ -33,12 +33,12 @@ pip install jupyterlab-lsp \
 # https://jupyterlab-lsp.readthedocs.io/en/latest/Language%20Servers.html
 jlpm add --dev bash-language-server dockerfile-language-server-nodejs
 
-# Install sagemaker SDK  & scikit-learn onto jlab server for jump to definition support for those libraries
+# Install sagemaker sdk  & scikit-learn onto jlab server for source code jump to definition
 pip install sagemaker scikit-learn
-# Create an lsp symlink directory so jupyterlab can open source-files not found in user home directory
+# Create an lsp symlink directory so jupyterlab-lsp can open source-files not found in user home directory
 mkdir .lsp_symlink
 ln -s /opt .lsp_symlink/opt
-# Enable opening of symlink files found in the hidden director `.lsp_symlink/`
+# Enable opening of symlink files found in the hidden directory `.lsp_symlink/`
 echo yes | jupyter server --generate-config
 sed -i '1i c.ContentsManager.allow_hidden = True' .jupyter/jupyter_server_config.py
 
