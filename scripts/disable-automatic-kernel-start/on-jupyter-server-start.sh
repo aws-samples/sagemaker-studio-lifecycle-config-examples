@@ -12,7 +12,7 @@ if [ "$AWS_SAGEMAKER_JUPYTERSERVER_IMAGE" != "jupyter-server-3" ] ; then
 fi
 
 echo "Creating Jupyter page config."
-mkdir ~/.jupyter/labconfig
+mkdir -p ~/.jupyter/labconfig
 touch ~/.jupyter/labconfig/page_config.json
 echo {\"notebookStartsKernel\": false} > ~/.jupyter/labconfig/page_config.json
 
