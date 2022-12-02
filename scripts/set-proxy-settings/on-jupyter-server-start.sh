@@ -25,4 +25,6 @@ echo "os.environ['HTTP_PROXY']="\""$PROXY_SERVER"\""" | tee -a ~/.ipython/profil
 echo "os.environ['HTTPS_PROXY']="\""$PROXY_SERVER"\""" | tee -a ~/.ipython/profile_default/startup/00-startup.py >/dev/null
 echo "os.environ['NO_PROXY']="\""$EXCLUDED_HOSTS"\""" | tee -a ~/.ipython/profile_default/startup/00-startup.py >/dev/null
 
-git config --global http.proxy "${PROXY_SERVER}"
+#setting for git, otherwise jupiterlab pligin (UI git) would not work
+#ignoring if no git installed - issue with data wrangler - no git there
+git config --global http.proxy ${AGN_PROXY_SERVER} || :
