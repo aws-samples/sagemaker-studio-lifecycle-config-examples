@@ -41,7 +41,7 @@ EOF
 chmod +x .auto-shutdown/set-time-interval.sh
 
 # You can download the tarball from GitHub or alternatively, if you're using VPCOnly mode, you can host on S3
-curl -L https://github.com/aws-samples/sagemaker-studio-auto-shutdown-extension/raw/main/sagemaker_studio_autoshutdown-0.1.5.tar.gz --output .auto-shutdown/extension.tar.gz
+curl -s -L https://github.com/aws-samples/sagemaker-studio-auto-shutdown-extension/raw/main/sagemaker_studio_autoshutdown-0.1.5.tar.gz --output .auto-shutdown/extension.tar.gz
 
 
 # Or instead, could serve the tarball from an S3 bucket in which case "wget" would not be needed:
