@@ -31,7 +31,7 @@ pip install jupyterlab-lsp \
     jupyterlab-code-formatter black isort
 # Some LSP language servers install via JS, not Python. For full list of language servers see:
 # https://jupyterlab-lsp.readthedocs.io/en/latest/Language%20Servers.html
-jlpm add --dev bash-language-server dockerfile-language-server-nodejs
+jlpm add --dev bash-language-server@"<5.0.0" dockerfile-language-server-nodejs
 
 # This configuration override is optional, to make LSP "extra-helpful" by default:
 CMP_CONFIG_DIR=.jupyter/lab/user-settings/@krassowski/jupyterlab-lsp/
