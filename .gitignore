@@ -1,0 +1,8 @@
+# OS and IDE files:
+.DS_Store
+.idea
+.ipynb_checkpoints/
+.vscode/
+
+# Python build artifacts:
+__pycache__/
