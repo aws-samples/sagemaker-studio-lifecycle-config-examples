@@ -42,7 +42,9 @@ print(sagemaker.__version__)
 
 ## Set up the Lifecycle Configuration Script
 
-Use the commands in [on-jupyterlab-start.sh](./on-jupyterlab-start.sh) to create a `JupyterLab` LCC and attach it to your Studio Domain and/or User Profile (See the general guidance in [this repository's root README](../../README.md) for more details on these steps, and debugging if things go wrong).
+Use the commands in [on-start.sh](./on-start.sh) to create a LCC of type `JupyterLab` **OR** `CodeEditor`, and attach it to your Studio Domain and/or User Profile (See the general guidance in [this repository's root README](../../README.md) for more details on these steps, and debugging if things go wrong).
+
+The same script code should work for either JupyterLab and Code Editor spaces, but if you want to use both you'll need to create a separate SageMaker LCC for each type.
 
 
 ## Verify your setup

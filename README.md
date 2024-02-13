@@ -35,7 +35,7 @@ The following samples should work in "new-style" SageMaker Studio spaces (such a
 
 | JupyterLab Spaces | Code-Editor Spaces | Studio Classic | Name / Link | Use-Case Description |
 |:-----------------:|:------------------:|:--------------:|:-----------:|:---------------------|
-| ✅ | ❓ | ❓ | [install-docker-local-mode](scripts/install-docker-local-mode/README.md) | Install Docker CLI tools to enable using [SageMaker Local Mode](https://aws.amazon.com/blogs/machine-learning/use-the-amazon-sagemaker-local-mode-to-train-on-your-notebook-instance/) for faster debugging in Studio notebook environments. |
+| ✅ | ✅ | ❌ | [install-docker-local-mode](scripts/install-docker-local-mode/README.md) | Install Docker CLI tools to enable using [SageMaker Local Mode](https://aws.amazon.com/blogs/machine-learning/use-the-amazon-sagemaker-local-mode-to-train-on-your-notebook-instance/) for faster debugging in Studio notebook environments. |
 
 
 ### Studio Classic scripts
