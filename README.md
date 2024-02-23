@@ -1,10 +1,12 @@
-# SageMaker Studio Lifecycle Configuration Samples
+# SageMaker Studio Classic Lifecycle Configuration Samples
 
 ### Overview
 
-A collection of sample scripts customizing SageMaker Studio Applications using Lifecycle Configuration
+A collection of sample scripts customizing SageMaker Studio Classic Applications using Lifecycle Configurations. **To customize the new Studio experience that runs on JupyterLab applications (including an LCC script to automatically shut down idle JupyterLab apps), refer to the repository here - https://github.com/aws-samples/sagemaker-studio-apps-lifecycle-config-examples/tree/main.**
 
-Lifecycle Configurations provide a mechanism to customize the Jupyter Server and Kernel Application instances via shell scripts that are executed during the lifecycle of the application.
+Lifecycle Configurations for [Studio Classic](https://docs.aws.amazon.com/sagemaker/latest/dg/studio.html) provide a mechanism to customize the Jupyter Server and Kernel Application instances via shell scripts that are executed during the lifecycle of the application. For information on customizing Studio Classic using Lifecycle configurations, refer to the [documentation](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-lcc.html). In addition to the directions to set LCC script using the AWS CLI as showcased in this repository, you can also create and assign the LCCs to domains or users through the AWS Console. For console instructions, see [here](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-lcc-create-console.html). 
+
+> ⚠️ **Warning:** If you're using a Windows computer, be aware LCC scripts must use Unix-style `LF` [line endings](https://stackoverflow.com/questions/1552749/difference-between-cr-lf-lf-and-cr-line-break-types) rather than Windows-style `CRLF`. You might find issues if uploading scripts through the AWS Console today, so we'd suggest using the CLI/APIs instead
 
 #### Sample Scripts
 
@@ -17,6 +19,10 @@ Lifecycle Configurations provide a mechanism to customize the Jupyter Server and
 * [set-git-config](scripts/set-git-config) - This script sets the username and email address in Git config.
 * [set-git-credentials](scripts/set-git-credentials) - Adds the user's git credentials to Secret Manager and configures git to fetch the credentials from there when needed
 * [set-proxy-settings](scripts/set-proxy-settings) - Configures HTTP and HTTPS proxy settings on jupter server and on the Studio kernels.
+
+#### Troubleshooting
+
+When a Studio app is started with a LCC enabled, an Amazon CloudWatch Log stream is created within the [/aws/sagemaker/studio log group](https://console.aws.amazon.com/cloudwatch/home?#logsV2:log-groups/log-group/$252Faws$252Fsagemaker$252Fstudio) (you must be signed in to your AWS account for this link to work), with a name like `$DOMAIN_ID/$USER_PROFILE_NAME/$APP_TYPE/$APP_NAME/LifecycleConfigOnStart` (where e.g. `$APP_TYPE` could be  `JupyterServer` or `KernelGateway` for Studio Classic apps). You can use these log streams to debug any problems while customizing your LCCs.
 
 #### Developing LCC Scripts for SageMaker Studio
 
