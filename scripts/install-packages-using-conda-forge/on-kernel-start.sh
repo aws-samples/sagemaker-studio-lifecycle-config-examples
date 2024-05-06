@@ -1,4 +1,4 @@
-# This script installs a single conda-forge package on a SageMaker Studio Kernel Application using mamba
+# This script installs a single conda-forge package on a SageMaker Studio Kernel Application using mamba for Data Science 3.0 and Data Science 2.0 Images
 #!/bin/bash
 
 set -eux
