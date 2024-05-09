@@ -6,4 +6,4 @@ set -eux
 # PARAMETERS
 PACKAGE=pyarrow
 
-pip install --upgrade $PACKAGE
+pip3 install --upgrade $PACKAGE
